@@ -3,12 +3,12 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
-      <section className="pt-24 pb-48 light-blue-gradient px-12 relative">
-        <div className="grid grid-cols-2 max-w-[94rem] mx-auto">
-          <div className="col-span-1">
-            <h1 className="text-7xl font-lato leading-relaxed font-semibold text-grey mt-32 mb-10">
-              Simplified&nbsp;
+    <main className="overflow-x-hidden">
+      <section className="pt-24 pb-48 light-blue-gradient px-12 relative largeTablet:px-10 smallTablet:pb-0 phone:px-4">
+        <div className="grid grid-cols-2 max-w-[94rem] mx-auto smallLaptop:grid-cols-3">
+          <div className="col-span-1 largeTablet:col-span-3">
+            <h1 className="text-7xl font-semibold leading-relaxed text-grey mt-32 mb-10 largeTablet:text-6xl tablet:mt-16 smallTablet:text-5xl">
+              Simplified{" "}
               <span className="text-primary">Payment Functionality</span>
               <br /> Services
             </h1>
@@ -25,31 +25,30 @@ export default function Home() {
               Learn More
             </Link>
           </div>
-          <div className="col-span-1">
+          <div className="col-span-1 flex justify-end items-end smallLaptop:col-span-2 largeTablet:col-start-2 smallTablet:col-span-3 smallTablet:col-start-1">
             <Image
               src="/girl-holding-phone.png"
               width={554}
               height={623}
               alt="girl-holding phone"
-              className="ml-auto"
             />
           </div>
         </div>
-        <div className="right-angle-element">
+        <div className="right-angle-element smallTablet:hidden">
           <div className="w-full h-full relative">
-            <div className="bg-secondary w-24 h-24 rounded-full absolute right-1/3 bottom-1/4"></div>
+            <div className="bg-secondary w-24 h-24 rounded-full absolute right-1/3 bottom-1/4 largeTablet:bottom-0 largeTablet:right-0"></div>
           </div>
         </div>
       </section>
-      <section className="py-5 px-12 relative">
-        <div className="absolute top-0 right-1/2 left-1/2 h-4 w-4 rounded rotate-[30deg] bg-primary"></div>
-        <div className="absolute top-0 right-1/4 h-10 w-10 rounded-xl rotate-[-20deg] bg-primary/34"></div>
+      <section className="py-5 px-12 relative largeTablet:px-10 smallTablet:pt-20 phone:px-4">
+        <div className="absolute top-0 right-1/2 left-1/2 h-4 w-4 rounded rotate-[30deg] bg-primary smallTablet:top-10"></div>
+        <div className="absolute top-0 right-1/4 h-10 w-10 rounded-xl rotate-[-20deg] bg-primary/34 smallTablet:top-10"></div>
         <p className="text-primary">Beyond Just Money Payment</p>
-        <hr className="h-1 rounded bg-primary w-8" />
-        <h2 className="text-6xl font-semibold max-w-sm leading-tight mb-10">
+        <hr className="h-1 rounded bg-primary w-8 mb-2" />
+        <h2 className="text-6xl font-semibold max-w-sm leading-tight mb-10 largeTablet:max-w-md largeTablet:text-5xl smallTablet:text-4xl">
           Payment made Easier and Safer
         </h2>
-        <div className="grid grid-cols-12 gap-3 text-grey">
+        <div className="grid grid-cols-12 gap-3 text-grey largeTablet:grid-cols-3">
           <p className="col-span-3 text-lg">
             At KonetPay, we believe that payments should be easy and secure.
             That&lsquo;s why we&lsquo;ve developed a payment platform that takes
@@ -65,7 +64,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid grid-cols-12">
-          <div className="col-span-7 col-start-4 -mt-32">
+          <div className="col-span-7 col-start-4 -mt-32 smallLaptop:-mt-20 largeTablet:-mt-10 largeTablet:col-span-full largeTablet:col-start-1 smallTablet:-mx-24 phone:-mx-16">
             <Image
               src="/payment-method.png"
               width={4464}
@@ -76,8 +75,8 @@ export default function Home() {
         </div>
       </section>
       <section className="py-5 mb-20">
-        <div className="grid grid-cols-10">
-          <div className="col-span-4">
+        <div className="grid grid-cols-10 largeTablet:grid-cols-6">
+          <div className="col-span-4 largeTablet:col-span-3 largeTablet:mb-10 smallTablet:col-span-4">
             <Image
               src="/pos-swipe.png"
               width={1074}
@@ -85,19 +84,19 @@ export default function Home() {
               alt="hand swipe a card on a POS machine"
             />
           </div>
-          <div className="col-span-6 pl-32 pr-12">
+          <div className="col-span-6 pl-32 pr-12 largeTablet:px-10 phone:px-4">
             <p className="text-primary">Beyond Just Money Payment</p>
-            <hr className="h-1 rounded bg-primary w-8" />
-            <h2 className="text-5xl font-semibold max-w-[40rem] leading-tight mb-10">
+            <hr className="h-1 rounded bg-primary w-8 mb-2" />
+            <h2 className="text-5xl font-semibold max-w-[40rem] leading-tight mb-10 largeTablet:text-4xl">
               Konetpay brings user friendly payments functionality services.
             </h2>
-            <p>
+            <p className="text-lg">
               Opening more opportunities for financial inclusion, customization
               of payments functionality services and offering customers many
               different ways to pay and receive money in Nigeria with global
               networks.
             </p>
-            <div className="grid grid-cols-3 pt-10 progress-grid">
+            <div className="grid grid-cols-3 pt-10 progress-grid smallTablet:grid-cols-2 smallTablet:gap-y-32 phone:grid-cols-1 phone:gap-y-24 phone:mb-10">
               <div className="percent">
                 <svg>
                   <circle
@@ -156,20 +155,20 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-5 px-12">
+      <section className="py-5 px-12 tablet:px-10 phone:px-0">
         <p className="text-primary text-center">Please Enjoy</p>
-        <hr className="h-1 rounded bg-primary w-8 mx-auto" />
-        <h2 className="text-5xl text-center font-semibold mb-10">
+        <hr className="h-1 rounded bg-primary w-8 mx-auto mb-2" />
+        <h2 className="text-5xl text-center font-semibold mb-16 smallTablet:text-4xl">
           Our services
         </h2>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 tablet:grid-cols-2 smallTablet:grid-cols-1">
           {services.map((service, index) => (
             <div
               key={service.title}
               className="relative border-l"
             >
               <div className="service-gradient"></div>
-              <div className="px-4 max-w-xs mb-20">
+              <div className="px-4 max-w-xs mb-20 phone:max-w-full smallTablet:mb-10">
                 <Image
                   src={service.image}
                   height={service.height}
@@ -192,18 +191,18 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="py-48 bg-primary/7 relative px-12">
-        <div className="right-angle-element-reverse top-0"></div>
+      <section className="py-48 bg-primary/7 relative px-12 smallTablet:py-20 phone:px-4">
+        <div className="right-angle-element-reverse top-0 smallTablet:hidden"></div>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl text-center font-semibold mb-10">
+          <h2 className="text-5xl text-center font-semibold mb-10 smallTablet:text-4xl">
             Subscribe to Our Newsletter
           </h2>
           <form className="border p-1 rounded-full w-full max-w-6xl flex mb-5">
             <input
               placeholder="Your Email"
-              className="rounded-full w-full bg-transparent p-3 outline-none"
+              className="rounded-full w-full bg-transparent p-3 outline-none phone:p-2"
             />
-            <button className="px-10 py-3 rounded-full bg-primary text-white">
+            <button className="px-10 py-3 rounded-full bg-primary text-white tablet:px-5 phone:px-3 phone:py-2">
               Subscribe
             </button>
           </form>
@@ -213,10 +212,10 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <footer className="pt-28 pb-10 bg-primary/34 px-12">
-        <div className="grid grid-cols-3 mb-10">
-          <div className="h-full flex items-center">
-            <div className="flex justify-center w-full gap-3">
+      <footer className="pt-28 pb-10 bg-primary/34 px-12 largeTablet:px-10 smallTablet:py-10 phone:px-4">
+        <div className="grid grid-cols-3 mb-10 smallTablet:grid-cols-2 phone:grid-cols-1">
+          <div className="h-full flex items-center smallTablet:col-span-2 smallTablet:mb-20">
+            <div className="flex justify-center w-full gap-3 smallTablet:justify-start">
               {socials.map((social) => (
                 <Link
                   key={social.alt}
@@ -232,8 +231,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div>
-            <div className="w-full max-w-xs mx-auto">
+          <div className="col-span-1">
+            <div className="w-full max-w-xs mx-auto smallTablet:max-w-full">
               <p className="font-semibold text-lg mb-2">Our Address</p>
               <p>
                 5 Jeremiah Ugwu Street,
@@ -245,7 +244,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div>
+          <div className="col-span-1">
             <p className="font-semibold text-lg mb-2">Contact Us</p>
             <p>
               <Link
@@ -280,8 +279,8 @@ export default function Home() {
           </div>
         </div>
         <p className="text-center">
-          Copyright © 2023. 21st Century Technology Limited. All rights
-          reserved.
+          Copyright © {new Date().getFullYear()}. 21st Century Technology
+          Limited. All rights reserved.
         </p>
       </footer>
     </main>
