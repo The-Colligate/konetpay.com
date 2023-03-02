@@ -9,7 +9,11 @@ body {
 }
 
 .light-blue-gradient {
-  background: linear-gradient(to bottom, #ffffff 0%, #f6f9fc 10%);
+  background: linear-gradient(to bottom, #ffffff 0%, #f6f9fc 15%);
+}
+
+.light-blue {
+  background: #f6f9fc;
 }
 
 .right-angle-element {
@@ -28,47 +32,105 @@ body {
   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
 }
 
-.percent {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #fff;
-  z-index: 1;
+.right-angle-element-reverse {
+  @extend .right-angle-element;
 
-  .number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+  // Clip paths
+  transform: scaleY(-1);
+}
 
-    p {
-      color: #ffbb38;
-      font-size: 24px;
-      transition: 0.5s ease;
-    }
-  }
+.progress-grid {
+  $circumference: 3.142 * 60 * 2;
 
-  svg {
+  .percent {
     position: relative;
-    width: 120px;
+    width: 100%;
     height: 120px;
-    // transform: rotate(-85deg);
-    stroke-dashoffset: calc(440px - (440px * 90) / 100);
+    border-radius: 100%;
+    background-color: #fff;
+    z-index: 1;
 
-    circle {
+    .number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 14px;
+      left: -5px;
       width: 100%;
       height: 100%;
-      fill: none;
-      stroke: #ffbb38;
-      stroke-width: 5;
-      stroke-linecap: round;
-      transform: translate(5px, 5px);
+      border-radius: 50%;
+
+      p {
+        color: #ffbb38;
+        font-size: 1.75rem;
+        transition: 0.5s ease;
+      }
+    }
+
+    svg {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      transform: rotate(-85deg);
+      margin-left: auto;
+      margin-right: auto;
+
+      circle {
+        fill: none;
+        stroke: #ffbb38;
+        stroke-width: 8;
+        stroke-linecap: round;
+        transform: translate(5px, 5px);
+        stroke-dasharray: $circumference $circumference;
+
+        // &:nth-child(2) {
+        //   // stroke-dasharray: 440;
+        //   stroke-dashoffset: 440;
+        // }
+      }
+    }
+
+    &:nth-child(1) {
+      svg {
+        circle {
+          stroke-dashoffset: calc(
+            $circumference - ((90 / 100) * $circumference)
+          );
+        }
+      }
+    }
+    &:nth-child(2) {
+      svg {
+        circle {
+          stroke-dashoffset: calc(
+            $circumference - ((75 / 100) * $circumference)
+          );
+        }
+      }
+    }
+    &:nth-child(3) {
+      svg {
+        circle {
+          stroke-dashoffset: calc(
+            $circumference - ((93 / 100) * $circumference)
+          );
+        }
+      }
     }
   }
+}
+
+.service-gradient {
+  position: absolute;
+  width: 3px;
+  height: 56px;
+  background: linear-gradient(
+    180deg,
+    #f64e1f 0%,
+    #60a297 29.46%,
+    #03a5f0 63.39%,
+    #feb906 96.35%
+  );
+  border-radius: 10px;
 }
