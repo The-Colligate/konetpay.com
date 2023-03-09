@@ -12,6 +12,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.rotate {
+  transform: rotate(180deg);
+}
+
 .light-blue {
   background: #f6f9fc;
 }

@@ -85,36 +85,30 @@ export const Navbar = () => {
               key={link.name}
               className="relative"
             >
-              <Link
-                className="flex item-center hover:text-primary"
-                href={link.link}
-                onClick={
-                  link.dropdown
-                    ? () => {
-                        console.log("clicked");
-                        setOpenMenu(openMenu === link.name ? null : link.name);
-                      }
-                    : undefined
-                }
-                target={!link.dropdown ? "_blank" : undefined}
-              >
-                {link.name}
-                {link.dropdown && (
-                  <>
-                    &nbsp;
-                    <span
-                      className={`-mt-0.5 ${
-                        openMenu === link.name ? "rotate-180 mt-1" : ""
-                      }`}
-                    >
-                      &#8964;
-                    </span>
-                  </>
-                )}
-              </Link>
+              {link.dropdown ? (
+                <button
+                  className="flex item-center hover:text-primary"
+                  onClick={() => {
+                    setOpenMenu(openMenu === link.name ? null : link.name);
+                  }}
+                >
+                  {link.name}
+                  &nbsp;
+                  <span className="-mt-0.5">&#8964;</span>
+                </button>
+              ) : (
+                <Link
+                  className="flex item-center hover:text-primary"
+                  href={link.link}
+                  target="_blank"
+                >
+                  {link.name}
+                </Link>
+              )}
+
               {link.dropdown && (
                 <div
-                  className={`absolute left-0 w-48 top-10 bg-white rounded shadow-lg transition-all ${
+                  className={`absolute left-0 w-48 top-10 bg-white dark:bg-dark rounded shadow-lg transition-all ${
                     openMenu === link.name ? "block" : "hidden"
                   }`}
                 >
