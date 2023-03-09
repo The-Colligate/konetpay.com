@@ -3,11 +3,11 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
-      <section className="pt-24 pb-48 light-blue-gradient px-12 relative largeTablet:px-10 smallTablet:pb-0 phone:px-4">
+    <main className="overflow-x-hidden dark:bg-dark">
+      <section className="pt-24 pb-48 px-12 relative bg-gradient-to-b from-[#fff_0%] to-[#f6f9fc_15%] dark:from-[#3f3f3f_0%] dark:to-[#343a41_15%] largeTablet:px-10 smallTablet:pb-0 phone:px-4">
         <div className="grid grid-cols-2 max-w-[94rem] mx-auto smallLaptop:grid-cols-3">
           <div className="col-span-1 largeTablet:col-span-3">
-            <h1 className="text-7xl font-semibold leading-relaxed text-grey mt-32 mb-10 largeTablet:text-6xl tablet:mt-16 smallTablet:text-5xl">
+            <h1 className="text-7xl font-semibold leading-relaxed text-grey dark:text-white mt-32 mb-10 largeTablet:text-6xl tablet:mt-16 smallTablet:text-5xl">
               Simplified{" "}
               <span className="text-primary">Payment Functionality</span>
               <br /> Services
@@ -19,7 +19,7 @@ export default function Home() {
               ease of hassle-free payments with KonetPay.
             </p>
             <Link
-              href="#"
+              href="https://www.konet.com/"
               className="text-white bg-primary px-4 py-3 rounded-lg text-lg"
             >
               Learn More
@@ -34,7 +34,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="right-angle-element smallTablet:hidden">
+        <div className="right-angle-element bg-white dark:bg-dark smallTablet:hidden">
           <div className="w-full h-full relative">
             <div className="bg-secondary w-24 h-24 rounded-full absolute right-1/3 bottom-1/4 largeTablet:bottom-0 largeTablet:right-0"></div>
           </div>
@@ -48,7 +48,7 @@ export default function Home() {
         <h2 className="text-6xl font-semibold max-w-sm leading-tight mb-10 largeTablet:max-w-md largeTablet:text-5xl smallTablet:text-4xl">
           Payment made Easier and Safer
         </h2>
-        <div className="grid grid-cols-12 gap-3 text-grey largeTablet:grid-cols-3">
+        <div className="grid grid-cols-12 gap-3 text-grey dark:text-white largeTablet:grid-cols-3">
           <p className="col-span-3 text-lg">
             At KonetPay, we believe that payments should be easy and secure.
             That&lsquo;s why we&lsquo;ve developed a payment platform that takes
@@ -165,21 +165,24 @@ export default function Home() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="relative border-l"
+              className="relative border-l dark:border-grey"
+              id={service.id}
             >
               <div className="service-gradient"></div>
-              <div className="px-4 max-w-xs mb-20 phone:max-w-full smallTablet:mb-10">
+              <div className="px-4 max-w-sm mb-20 phone:max-w-full smallTablet:mb-10">
                 <Image
                   src={service.image}
                   height={service.height}
                   width={service.width}
                   alt={service.link.split("/")[0]}
-                  className="max-w-[5rem] mb-3"
+                  className="mb-3"
                 />
                 <p className="text-lg font-semibold mb-3 whitespace-pre-wrap">
                   {service.title}
                 </p>
-                <p className="text-gray-500 mb-5">{service.description}</p>
+                <p className="text-gray-500 mb-5 dark:text-white">
+                  {service.description}
+                </p>
                 <Link
                   href={service.link}
                   className="px-3 py-2 rounded-full bg-primary text-white"
@@ -192,7 +195,7 @@ export default function Home() {
         </div>
       </section>
       <section className="py-48 bg-primary/7 relative px-12 smallTablet:py-20 phone:px-4">
-        <div className="right-angle-element-reverse top-0 smallTablet:hidden"></div>
+        <div className="right-angle-element-reverse bg-white dark:bg-dark top-0 smallTablet:hidden"></div>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl text-center font-semibold mb-10 smallTablet:text-4xl">
             Subscribe to Our Newsletter
@@ -206,12 +209,18 @@ export default function Home() {
               Subscribe
             </button>
           </form>
-          <p className="text-gray-500 text-center">
+          <p className="text-gray-500 text-center dark:text-white">
             Subscribe today to receive latest news and best industry practise on
             Mobile Money Services.
           </p>
         </div>
       </section>
+      <a
+        href="#top"
+        className="fixed bottom-5 right-5 text-sm"
+      >
+        Back to top &#8593;
+      </a>
       <footer className="pt-28 pb-10 bg-primary/34 px-12 largeTablet:px-10 smallTablet:py-10 phone:px-4">
         <div className="grid grid-cols-3 mb-10 smallTablet:grid-cols-2 phone:grid-cols-1">
           <div className="h-full flex items-center smallTablet:col-span-2 smallTablet:mb-20">
@@ -289,67 +298,74 @@ export default function Home() {
 
 const services = [
   {
-    image: "/money-chart.png",
-    height: 140,
-    width: 140,
+    id: "salary",
+    image: "/konet-salary.png",
+    height: 41,
+    width: 145,
     title: "Konet Salary and Vendor Payment",
     description:
       "Konetpay will enable seamless salary payments and fund sweeping for the state government and parastatals. Fee for salary payment is charged per transaction/credit account.",
-    link: "#",
+    link: "https://www.konet.com/",
   },
   {
-    image: "/money.png",
-    height: 140,
-    width: 140,
+    id: "revenue",
+    image: "/konet-revenue.png",
+    height: 47,
+    width: 193,
     title: "Konet Revenue IGR collection",
     description:
       "Konetpay can enable government revenue collection via multiple payment channels including Bank Branches, Internet banking, PoS , online, Agency locations etc. Fee is charged as a percentage of...",
-    link: "#",
+    link: "https://www.konet.com/",
   },
   {
-    image: "/money-coin.png",
-    height: 140,
-    width: 140,
+    id: "ais",
+    image: "/konet-ais.png",
+    height: 40,
+    width: 120,
     title: "Konet Account Inventory Service",
     description:
       "Konetpay is also able to supply a list of accounts belonging to the state across all the banks to unravel/discover all state government and associated accounts...",
-    link: "#",
+    link: "https://www.konet.com/",
   },
   {
-    image: "/user-verify.png",
-    height: 140,
-    width: 140,
+    id: "bvs",
+    image: "/konet-bvs.png",
+    height: 40,
+    width: 116,
     title: "Konet BVN validation Service",
     description:
       "This can facilitate KYC and identification process for the state government and its parastatals it entails validation of personal data including BVN via NIBSS The system accepts...",
-    link: "#",
+    link: "https://www.konet.com/",
   },
   {
-    image: "/diamond.png",
-    height: 140,
-    width: 140,
+    id: "tsa",
+    image: "/konet-tsa.png",
+    height: 40,
+    width: 143,
     title: "Konet TSA",
     description:
       "Konetpay will provide treasury management solution for the state government through a real time dashboard view of bank account balances across all banks and ease of funds...",
-    link: "#",
+    link: "https://www.konet.com/",
   },
   {
-    image: "/piggy-bank.png",
-    height: 140,
-    width: 140,
+    id: "accounts",
+    image: "/konet-accounts.png",
+    height: 40,
+    width: 169,
     title: "Konet Account \nVerification/Clean-up Services",
     description:
       "Konetpay can obtain account names corresponding to payee account numbers prior to effecting bulk payment s as to prevent payment into wrong accounts and to ensure...",
-    link: "#",
+    link: "https://www.konet.com/",
   },
   {
-    image: "/pos.png",
-    height: 140,
-    width: 82,
+    id: "pos",
+    image: "/konet-pos.png",
+    height: 40,
+    width: 153,
     title: "Konet POS",
     description:
       "Our POS system handles payments for products and services, transactions in person or online, and provides receipts, while also streamlining customer relationship...",
-    link: "#",
+    link: "https://www.konet.com/",
   },
 ];
 

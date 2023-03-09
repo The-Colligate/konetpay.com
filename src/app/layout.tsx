@@ -1,3 +1,6 @@
+"use client";
+
+import { ThemeProvider } from "next-themes";
 import "./globals.scss";
 import { Navbar } from "./navbar";
 
@@ -14,8 +17,15 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <Navbar />
-        {children}
+        <ThemeProvider
+          defaultTheme="dark"
+          attribute="class"
+          enableSystem
+          enableColorScheme
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

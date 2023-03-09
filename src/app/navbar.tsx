@@ -3,43 +3,144 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import ThemeSwitch from "./themeswitch";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   const links = [
     {
       name: "Products",
       link: "#",
+      dropdown: true,
+      items: [
+        {
+          name: "KonetSalary",
+          link: "#salary",
+        },
+        {
+          name: "KonetRevenue",
+          link: "#revenue",
+        },
+        {
+          name: "KonetAIS",
+          link: "#ais",
+        },
+        {
+          name: "KonetAccounts",
+          link: "#accounts",
+        },
+        {
+          name: "KonetTSA",
+          link: "#tsa",
+        },
+        {
+          name: "KonetBVS",
+          link: "#bvs",
+        },
+        {
+          name: "KonetPOS",
+          link: "#pos",
+        },
+      ],
     },
     {
       name: "About Us",
-      link: "#",
+      link: "https://21ctl.com/explore-more",
+      dropdown: false,
     },
     {
-      name: "FAQ",
-      link: "#",
+      name: "Main Portal",
+      link: "https://www.konet.com/",
+      dropdown: false,
     },
   ];
 
   return (
-    <nav className="flex items-center justify-between px-12 py-3 absolute min-w-full top-0 z-10 largeTablet:px-10 smallTablet:px-4">
+    <nav
+      id="top"
+      className="flex items-center justify-between px-12 py-3 absolute min-w-full top-0 z-10 largeTablet:px-10 smallTablet:px-4 smallTablet:pt-0"
+    >
       <Link href="/">
         <Image
           src="/logo.png"
           width={150}
           height={46}
           alt="KonetPay logo"
+          className="tablet:max-w-[8rem] phone:max-w-[6rem] dark:hidden"
+        />
+        <Image
+          src="/logo-dark.png"
+          width={150}
+          height={46}
+          alt="KonetPay logo"
+          className="tablet:max-w-[8rem] phone:max-w-[6rem] hidden dark:block"
         />
       </Link>
       <div className="flex-grow flex justify-center smallTablet:hidden">
         <ul className="flex items-center gap-8">
           {links.map((link) => (
-            <li key={link.name}>
-              <Link href={link.link}>{link.name}</Link>
+            <li
+              key={link.name}
+              className="relative"
+            >
+              <Link
+                className="flex item-center hover:text-primary"
+                href={link.link}
+                onClick={
+                  link.dropdown
+                    ? () => {
+                        console.log("clicked");
+                        setOpenMenu(openMenu === link.name ? null : link.name);
+                      }
+                    : undefined
+                }
+                target={!link.dropdown ? "_blank" : undefined}
+              >
+                {link.name}
+                {link.dropdown && (
+                  <>
+                    &nbsp;
+                    <span
+                      className={`-mt-0.5 ${
+                        openMenu === link.name ? "rotate-180 mt-1" : ""
+                      }`}
+                    >
+                      &#8964;
+                    </span>
+                  </>
+                )}
+              </Link>
+              {link.dropdown && (
+                <div
+                  className={`absolute left-0 w-48 top-10 bg-white rounded shadow-lg transition-all ${
+                    openMenu === link.name ? "block" : "hidden"
+                  }`}
+                >
+                  <ul className="w-full py-4 px-8 bg-primary bg-opacity-5">
+                    {link?.items?.map((item) => (
+                      <li
+                        key={item.name}
+                        className="mb-5 last-of-type:mb-0"
+                      >
+                        <a
+                          href={item.link}
+                          className="hover:text-primary"
+                        >
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </li>
           ))}
         </ul>
+      </div>
+      <div className="smallTablet:hidden">
+        <ThemeSwitch />
       </div>
       <button
         className="hidden smallTablet:block"
@@ -48,10 +149,13 @@ export const Navbar = () => {
         <Menu />
       </button>
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-white z-10 transition-all ${
+        className={`fixed top-0 left-0 w-full h-full bg-white z-10 transition-all hidden smallTablet:block ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        } dark:bg-[#343a41]`}
       >
+        <div className="fixed bottom-2 right-2 ">
+          <ThemeSwitch />
+        </div>
         <div className="absolute top-4 right-4 p-4">
           <button onClick={() => setIsOpen(false)}>
             <svg
@@ -82,7 +186,60 @@ export const Navbar = () => {
           <ul className="flex flex-col gap-8">
             {links.map((link) => (
               <li key={link.name}>
-                <Link href={link.link}>{link.name}</Link>
+                <Link
+                  className="flex item-center text-lg hover:text-primary"
+                  href={link.link}
+                  onClick={
+                    link.dropdown
+                      ? () => {
+                          console.log("clicked");
+                          setOpenMenu(
+                            openMenu === link.name ? null : link.name,
+                          );
+                        }
+                      : undefined
+                  }
+                  target={!link.dropdown ? "_blank" : undefined}
+                >
+                  {link.name}
+                  {link.dropdown && (
+                    <>
+                      &nbsp;
+                      <span
+                        className={`-mt-0.5 ${
+                          openMenu === link.name ? "rotate-180 mt-1" : ""
+                        }`}
+                      >
+                        &#8964;
+                      </span>
+                    </>
+                  )}
+                </Link>
+                {link.dropdown && (
+                  <ul
+                    className={`rounded mt-5 ${
+                      openMenu === link.name ? "block" : "hidden"
+                    }`}
+                  >
+                    {link?.items?.map((item) => (
+                      <li
+                        key={item.name}
+                        className="mb-5 last-of-type:mb-0"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setOpenMenu(null);
+                        }}
+                      >
+                        <a
+                          href={item.link}
+                          className="hover:text-primary"
+                        >
+                          {item.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
