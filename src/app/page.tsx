@@ -44,7 +44,7 @@ export default function Home() {
         <div className="absolute top-0 right-1/2 left-1/2 h-4 w-4 rounded rotate-[30deg] bg-primary smallTablet:top-10"></div>
         <div className="absolute top-0 right-1/4 h-10 w-10 rounded-xl rotate-[-20deg] bg-primary/34 smallTablet:top-10"></div>
         <p className="text-primary">Beyond Just Money Payment</p>
-        <hr className="h-1 rounded bg-primary w-8 mb-2" />
+        <hr className="h-1 rounded bg-primary border-none w-8 mb-2" />
         <h2 className="text-6xl font-semibold max-w-sm leading-tight mb-10 largeTablet:max-w-md largeTablet:text-5xl smallTablet:text-4xl">
           Payment made Easier and Safer
         </h2>
@@ -86,7 +86,7 @@ export default function Home() {
           </div>
           <div className="col-span-6 pl-32 pr-12 largeTablet:px-10 phone:px-4">
             <p className="text-primary">Beyond Just Money Payment</p>
-            <hr className="h-1 rounded bg-primary w-8 mb-2" />
+            <hr className="h-1 rounded bg-primary border-none w-8 mb-2" />
             <h2 className="text-5xl font-semibold max-w-[40rem] leading-tight mb-10 largeTablet:text-4xl">
               Konetpay brings user friendly payments functionality services.
             </h2>
@@ -157,7 +157,7 @@ export default function Home() {
       </section>
       <section className="py-5 px-12 tablet:px-10 phone:px-0">
         <p className="text-primary text-center">Please Enjoy</p>
-        <hr className="h-1 rounded bg-primary w-8 mx-auto mb-2" />
+        <hr className="h-1 rounded bg-primary border-none w-8 mx-auto mb-2" />
         <h2 className="text-5xl text-center font-semibold mb-16 smallTablet:text-4xl">
           Our services
         </h2>
